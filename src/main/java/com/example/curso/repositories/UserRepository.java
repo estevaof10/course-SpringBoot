@@ -6,7 +6,4 @@ import com.example.curso.entities.User;
 
 public interface UserRepository extends JpaRepository<User,Long> {
 
-	
-	
-	
 }
