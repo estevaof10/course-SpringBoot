@@ -12,8 +12,9 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
-@Table(name = "tb_category")
-public class Category implements Serializable {
+@Table(name = "tb_product")
+public class Product implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	
@@ -23,38 +24,88 @@ public class Category implements Serializable {
 	
 	private String nome;
 	
-	@Transient
-	private Set<Product> products = new HashSet<>();
+	private String description;
 	
-	public Category() {
+	private double price;
+	
+	private String imgUrl;
+	@Transient
+	private Set<Category> categories =  new HashSet<>();
+	
+	public Product(){
 		
 	}
-	
-	public Category(Long id, String nome) {
+
+
+	public Product(Long id, String nome, String description, double price, String imgUrl) {
 		this.id = id;
 		this.nome = nome;
+		this.description = description;
+		this.price = price;
+		this.imgUrl = imgUrl;
 	}
+
 
 	public Long getId() {
 		return id;
 	}
 
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 
 	public String getNome() {
 		return nome;
 	}
 
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
 
-	public Set<Product> getProducts() {
-		return products;
+
+	public String getDescription() {
+		return description;
 	}
-	
+
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+
+	public double getPrice() {
+		return price;
+	}
+
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+
+	public String getImgUrl() {
+		return imgUrl;
+	}
+
+
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
+	}
+
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+
+	public Set<Category> getCategories() {
+		return categories;
+	}
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -62,6 +113,7 @@ public class Category implements Serializable {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -71,7 +123,7 @@ public class Category implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Category other = (Category) obj;
+		Product other = (Product) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -80,8 +132,8 @@ public class Category implements Serializable {
 		return true;
 	}
 
-
-
+	
+	
 	
 	
 }
